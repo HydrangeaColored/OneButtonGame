@@ -82,7 +82,7 @@ let player;
 let enemies;
 
 enemies = [];
-let currentEnemySpeed = 3;
+let currentEnemySpeed = 1;
 let delay = 25;
 let currSide = 0;
 let speedIncrease = 0;
@@ -132,6 +132,7 @@ function  update() {
 }
 
 function initializeEnemies(){
+    currSide = 0;
     enemies[0] = ({ pos: vec(G.WIDTH * 0.5, 0), active: false, color: 4});
     enemies[1] = ({ pos: vec(G.WIDTH, G.HEIGHT * 0.5), active: false, color: 4});
     enemies[2] = ({ pos: vec(G.WIDTH * 0.5, G.HEIGHT), active: false,  color: 4});
@@ -202,6 +203,7 @@ function updateEnemies(){
         }
         if(enemies[0].pos.y >= playerPos.HEIGHT){
             if(currPlayerType != enemies[0].color){
+                initializeEnemies();
                 end();
                 return;
             }else{
@@ -242,6 +244,7 @@ function updateEnemies(){
         }
         if(enemies[1].pos.x <= playerPos.WIDTH){
             if(currPlayerType != enemies[1].color){
+                initializeEnemies();
                 end();
                 return;
             }else{
@@ -282,6 +285,7 @@ function updateEnemies(){
         }
         if(enemies[2].pos.y <= playerPos.HEIGHT){
             if(currPlayerType != enemies[2].color){
+                initializeEnemies();
                 end();
                 return;
             }else{
@@ -322,6 +326,7 @@ function updateEnemies(){
         }
         if(enemies[3].pos.x >= playerPos.WIDTH){
             if(currPlayerType != enemies[3].color){
+                initializeEnemies();
                 end();
                 return;
             }else{
